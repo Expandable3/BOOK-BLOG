@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+
+<svg viewBox="0 0 1800 600">
+  <symbol id="s-text">
+    <text text-anchor="middle"
+          x="50%"
+          y="35%"
+          class="webcoderskull"
+          >
+      Welcome 
+    </text>
+    <text text-anchor="middle"
+          x="50%"
+          y="68%"
+          class="text--line"
+          >
+     Geek
+    </text>
+    
+  </symbol>
+  
+  <g class="g-ants">
+    <use xlink:href="#s-text"
+      class="webcoderskull-1"></use>     
+    <use xlink:href="#s-text"
+      class="webcoderskull-1"></use>     
+    <use xlink:href="#s-text"
+      class="webcoderskull-1"></use>     
+    <use xlink:href="#s-text"
+      class="webcoderskull-1"></use>     
+    <use xlink:href="#s-text"
+      class="webcoderskull-1"></use>     
+  </g>
+  
+  
+</svg>
+
+
+<hr>
+
+
+<div class="container">
+	
+	
+	<div class="block">
+      <div class="row">
+        <div class="span4">
+          <img class="img-left" style=" float: left;  margin-right: 10px;width: 49%; height: auto;" src="{% static "img/project.jpg" %}">
+          <div class="content-heading"> <a style="color: 605557;font-family: chilanka;" href="{% url 'project_index' %}"> <h3 style="font-size: 6em;" >Projects</h3></a></div>
+          <p style="font-size: 19px;font-family: 'Raleway', sans-serif;" >This section of the portflio contains the breff introduction of the projects made by me.This will tell you about the technologies used in them as well as will tell you breafly about the project.This section is made effective by some pictorial representation. Hope you like it!!!!  </p>
+          
+        </div>
+     </div>
+     <hr>
+     <br/>
+      <div class="row">
+        <div class="span4">
+          <img class="img-right" style=" float: right;  margin-right: 10px;width: 49%; height: auto;" src="{% static "img/2.png" %}">
+          <div class="content-heading"><a style="color: 605557;font-family: chilanka;" href="{% url 'blog_index' %}"> <h3 style="font-size: 6em;" >Blog</h3></a></div>
+          <p style="font-size: 19px;font-family: 'Raleway', sans-serif;">This is the technical blog that will provide you the technical knowledge about the latest emerging technologies.</p>
+         
+        </div>
+     </div>
+     <hr>
+    </div>
+    <br>
+    <br>
+    <br>
+</div>
+
+
+
+
+
+
+{% endblock %}
