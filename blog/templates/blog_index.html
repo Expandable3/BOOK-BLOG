@@ -7,20 +7,20 @@
 
         <div class="mySlides fade">
           <div class="numbertext">1 / 3</div>
-          <img src="{% static 'img/slide_1.jpg' %}" alt="upvote" style="width:max-content;height:100%" >
-          <div class="text">Caption Text</div>
+          <img src="{% static 'img/slide_1.jpg' %}" alt="upvote" style="width:100%;height:100%" >
+          <!-- <div class="text">Caption Text</div> -->
         </div>
         
         <div class="mySlides fade">
           <div class="numbertext">2 / 3</div>
-          <img src="{% static 'img/slide_2.jpg' %}" style="width:1800px;height:100%">
-          <div class="text">Caption Two</div>
+          <img src="{% static 'img/slide_2.jpg' %}" style="width: 100%;height:100%">
+          <!-- <div class="text">Caption Two</div> -->
         </div>
         
         <div class="mySlides fade">
           <div class="numbertext">3 / 3</div>
-          <img src="{% static 'img/slide_1.jpg' %}" style="width:max-content;height:100%">
-          <div class="text">Caption Three</div>
+          <img src="{% static 'img/slide_1.jpg' %}" style="width:100%;height:100%">
+          <!-- <div class="text">Caption Three</div> -->
         </div>
         
         </div>
@@ -51,7 +51,7 @@
               dots[slideIndex-1].className += " active";
               setTimeout(showSlides, 2000); // Change image every 2 seconds
             }
-            </script>
+          </script>
 </div>
 
 <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
@@ -60,31 +60,74 @@
     <!-- <img style="max-width: 100%; height: auto; margin-bottom:30px; " src="{% static "img/2.png" %}"> -->
     
     {% for post in posts %}
-    <div  >   
-        <br>
-        <br>
-        <h1><b><a style="color: 605557;font-family: chilanka;" href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></b></h1>
-        
-            {{ post.created_on.date }} |&nbsp;
-            Categories:&nbsp;
-            {% for category in post.categories.all %}
-            <a href="{% url 'blog_category' category.name %}">
-                {{ category.name }}
-            </a>&nbsp;
-            {% endfor %}
-        <hr>
-        <div>
-            
-                <img id="img-2" src="{{post.images.url}}" alt="imgae" >
-            
-                <p style="font-size:23px; font-family: 'Raleway', sans-serif;" >{{ post.body | slice:":400" }}...</p>
-                
-        {% endfor %}
-        </div>
+    <div style="padding-top:40px">   
+      <br>
+      <br>
+      <h1><b><a id="p2" href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></b></h1>
+      
+          {{ post.created_on.date }} |&nbsp;
+          Categories:&nbsp;
+          {% for category in post.categories.all %}
+          <a href="{% url 'blog_category' category.name %}">
+              {{ category.name }}
+          </a>&nbsp;
+          {% endfor %}
+      <hr>
+      <div>
+          
+          <img id="img-2" src="{{post.images.url}}" alt="imgae" >
+      
+          <p id="p1" >{{ post.body | slice:":400" }}...</p>
+          
+      {% endfor %}
+      </div>
     </div>
 
     <br>
     <br>
     <br>
 </div>
+<!-- for image slide show -->
+<div class="box padding">
+  <script>
+    var i=0; //start point
+    var images=[];
+    var time=2000;
+    var time2=2000;
+    var img=[];
+    var img2=[];
+     //images List
+     images[0]="{% static 'img/6.png'%}";
+     images[1]="{% static 'img/7.png'%}";
+     images[2]="{% static 'img/8.png'%}";
+     images[3]="{% static 'img/6.png'%}";
+     function changeImg(){
+         document.slide.src=images[i];
+        //  document.slide2.src=img[i];
+        //  document.slide3.src=img2[i];
+         if(i<images.length - 1){
+             i++;
+         }
+         else{
+            i=0;
+        }
+
+        setTimeout("changeImg()",time);
+       
+              
+         
+     }
+     
+     window.onload=changeImg ;
+    //  window.onload=chagImg
+
+  </script>
+  
+  <img name="slide" width="300px" height="300px"  >
+  <!-- <img name="slide2" width="300px" height="300px"> -->
+  <!-- <img name="slide3" width="300px" height="300px"> -->
+    
+
+</div>
+
 {% endblock %}

@@ -9,12 +9,12 @@
     <div class="v1">
         <div >
             <!-- <h5 style="font-family: chilanka;font-size: 4em;margin-top:10px;padding-top:15px;padding-bottom:15px;"><u> {{ post.title }} </u></h1> -->
-            <h3><b>{{post.title}}</b></h3>   
+            <h3 class="font" ><b>{{post.title}}</b></h3>   
             <!-- <hr> -->
             
-                <h3 style="font-family: chilanka;"> Posted on:
+                <h3 class="font"> Posted on:
                 {{ post.created_on.date }} &nbsp; </h3>
-                <h3 style="font-family: chilanka;"> Categories:&nbsp;
+                <h3 class="font"> Categories:&nbsp;
                 {% for category in post.categories.all %}
                 <a href="{% url 'blog_category' category.name %}">
                     {{ category.name }}
@@ -24,8 +24,8 @@
         </div>
 
         <!-- <hr> -->
-        <div>
-                <p style="font-size:23px; font-family: 'Raleway', sans-serif;">{{ post.body | linebreaks }}</p>
+        <div id="p1">
+                <p >{{ post.body | linebreaks }}</p>
         </div>
 
     
@@ -34,8 +34,8 @@
     
 
     
-    <div class="container" style="padding: 20px;">
-    <h1 style="font-family: Lato;padding: 20px;"> <u> Write a review:</u></h1>
+    <div class="container padding" >
+    <h1 class="padding" style="font-family:Lato;"> <u> Write a review:</u></h1>
     <form action="/blog/{{ post.pk }}/" method="post">
         {% csrf_token %}
         <div class="input-field col s12 ">
@@ -50,17 +50,19 @@
     </form>
     </div>
     <hr>
-    <h3 id='comment'>COMMUNITY REVIEWS</h3>
-    {% for comment in comments %}
-    <p>
-        On {{comment.created_on.date }}&nbsp;
-        <b>{{ comment.author }}</b> wrote:
-    </p>
-    <p>{{ comment.body }}</p>
-    
-    {% endfor %}
-    <hr>
-</div>
+    <div class="container padding">
+        <h3 id='comment'>COMMUNITY REVIEWS</h3>
+        {% for comment in comments %}
+        <p>
+            On {{comment.created_on.date }}&nbsp;
+            <b>{{ comment.author }}</b> wrote:
+        
+        <p>{{ comment.body }}</p>
+        </p>
+        {% endfor %}
+        <hr>
+    </div>
+</div >
 
 <br>
 <br>
